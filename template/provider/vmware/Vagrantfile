@@ -57,6 +57,7 @@ boxes.append(
 
       # IP
       target.vm.network :private_network, ip: box[:ip]
+      target.vm.network :public_network, ip: box[:ip2], bridge: "br0"
 
       # OS specific
       if box[:os] == "windows"
