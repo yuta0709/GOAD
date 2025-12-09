@@ -23,7 +23,6 @@
        nat_adapter="{{item.connection_name}}"
       when: 
       - "item.ipv4.address != hostvars[dict_key].ansible_host"
-      - "item.ipv4.address != hostvars[dict_key].ip2"
       with_items: "{{ ansible_interfaces }}"
       run_once: true
 

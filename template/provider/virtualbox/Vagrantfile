@@ -54,8 +54,7 @@ boxes.append(
       target.vm.synced_folder '.', '/vagrant', disabled: true
 
       # IP
-      target.vm.network :private_network, ip: box[:ip]
-      target.vm.network :public_network, ip: box[:ip2], bridge: "br0"
+      target.vm.network :public_network, ip: box[:ip], bridge: "enp3s0"
 
       # OS specific
       if box[:os] == "windows"
