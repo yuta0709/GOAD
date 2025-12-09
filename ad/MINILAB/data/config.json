@@ -7,7 +7,7 @@
             "local_admin_password": "8dCT-DJjgScp",
             "domain" : "mini.lab",
             "path" : "DC=mini,DC=lab",
-            "vulns" : ["files", "credentials", "enable_credssp_client", "schedule"],
+            "vulns" : ["shares"],
             "vulns_vars" : {
                 "credentials" : {
                     "TERMSRV/alicesecret": {
@@ -28,6 +28,25 @@
                         "name": "connect_bot",
                         "cmd" : "powershell c:\\bot.ps1",
                         "interval" : "PT1M"
+                    }
+                },
+                "shares": {
+                    "ML_PUBLIC": {
+                        "path": "C:\\shares\\public",
+                        "list": "yes",
+                        "full": "MINILAB\\Domain Admins",
+                        "read": "Users"
+                    },
+                    "ML_WSADM": {
+                        "path": "C:\\shares\\wsadmins",
+                        "list": "yes",
+                        "full": "MINILAB\\wsadmin"
+                    },
+                    "ML_RW": {
+                        "path": "C:\\shares\\rw",
+                        "list": "yes",
+                        "full": "MINILAB\\Domain Admins",
+                        "change": "MINILAB\\wsadmin"
                     }
                 }
             },
@@ -53,7 +72,7 @@
                     "MINILAB\\wsrdp"
                 ]
             },
-            "vulns" : ["disable_firewall", "enable_credssp_server"]
+            "vulns" : []
         }
     },
     "domains" : {
