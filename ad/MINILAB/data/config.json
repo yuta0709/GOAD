@@ -30,6 +30,12 @@
                         "interval" : "PT1M"
                     }
                 }
+            },
+            "mssql": {
+                "svcaccount": "sql_svc",
+                "sysadmins": [ "MINILAB\\alice" ],
+                "sa_password": "SaP@ssw0rd1!",
+                "sql_instance_name": "MSSQLSERVER"
             }
         },
         "ws01" : {
@@ -76,7 +82,10 @@
                     "firstname"   : "alice",
                     "password"    : "spongebob",
                     "groups"      : ["wsadmin", "Domain Admins"],
-                    "path"        : "CN=Users,DC=mini,DC=lab"
+                    "path"        : "CN=Users,DC=mini,DC=lab",
+                    "spns"        : [
+                        "HTTP/dc.mini.lab"
+                    ]
                 },
                 "bob" : {
                     "firstname"   : "bob",
@@ -96,6 +105,36 @@
                     "password"    : "rockyou",
                     "groups"      : ["wsrdp"],
                     "path"        : "CN=Users,DC=mini,DC=lab"
+                },
+                "sql_svc": {
+                    "firstname"   : "SQL",
+                    "password"    : "SqlSvcP@ssw0rd1",
+                    "groups"      : [ "Domain Users" ],
+                    "path"        : "CN=Users,DC=mini,DC=lab",
+                    "spns"        : [
+                        "MSSQLSvc/dc.mini.lab:1433",
+                        "MSSQLSvc/dc:1433"
+                    ]
+                },
+                "http_svc01": {
+                    "firstname"   : "HttpSvc01",
+                    "password"    : "HttpSvcP@ssw0rd1",
+                    "groups"      : [ "Domain Users" ],
+                    "path"        : "CN=Users,DC=mini,DC=lab",
+                    "spns"        : [
+                        "HTTP/dc.mini.lab",
+                        "HTTP/ws.mini.lab"
+                    ]
+                },
+                "app_svc01": {
+                    "firstname"   : "AppSvc01",
+                    "password"    : "AppSvcP@ssw0rd1",
+                    "groups"      : [ "Domain Users" ],
+                    "path"        : "CN=Users,DC=mini,DC=lab",
+                    "spns"        : [
+                        "HOST/app01.mini.lab",
+                        "HOST/app01"
+                    ]
                 }
             }
         }

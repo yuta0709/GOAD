@@ -34,6 +34,8 @@ dc01
 ws01
 [parent_dc]
 dc01
+[mssql]
+dc01
 [update]
 dc01
 ws01
